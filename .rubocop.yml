@@ -30,3 +30,6 @@ Metrics/ClassLength:
 
 Style/NumericLiterals:
   Enabled: false
+
+Metrics/BlockLength:
+  Max: 250
