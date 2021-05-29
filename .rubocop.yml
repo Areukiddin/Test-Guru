@@ -27,3 +27,9 @@ Metrics/PerceivedComplexity:
 
 Metrics/ClassLength:
   Max: 120
+
+Style/NumericLiterals:
+  Enabled: false
+
+Metrics/BlockLength:
+  Max: 250
