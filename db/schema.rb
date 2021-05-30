@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 2021_05_21_174951) do
 
   create_table 'questions', force: :cascade do |t|
     t.string 'body', null: false
-    t.string 'correct_answer', null: false
     t.bigint 'test_id', null: false
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
