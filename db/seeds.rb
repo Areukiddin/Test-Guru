@@ -5,33 +5,42 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-categories = [{ id: 1, title: 'Frontend' }, { id: 2, title: 'Backend' }]
 
-tests = [{ id: 1, title: 'HTML', category_id: 1, author_id: 1 }, { id: 2, title: 'Ruby', category_id: 2, author_id: 1 },
-         { id: 3, title: 'CSS', category_id: 1, author_id: 1 }]
+User.create!({ name: 'Evgeny', email: 'test@test.com', password: '123456' })
 
-questions = [{ id: 1, body: 'Какой из предложенных тегов соответствует параграфу?', test_id: 1 },
-             { id: 2, body: 'Как называется функция, которая автоматически создаёт только в классе метод присвоения переменной?',
-               test_id: 2 },
-             { id: 3, body: 'Как расшифровывается CSS', test_id: 3 }]
+categories = [{ title: 'Frontend' }, { title: 'Backend' }]
 
-answers = [{ body: '<div>', correct: false, question_id: 1 },
-           { body: '<span>', correct: false, question_id: 1 },
-           { body: '<p>', correct: true, question_id: 1 },
-           { body: '<a>', correct: false, question_id: 1 },
-           { body: 'attr_reader', correct: false, question_id: 2 },
-           { body: 'attr_accessor', correct: false, question_id: 2 },
-           { body: 'initialize', correct: false, question_id: 2 },
-           { body: 'attr_writer', correct: true, question_id: 2 },
-           { body: 'Common Style Sheets', correct: false, question_id: 3 },
-           { body: 'Computer Style Sheets', correct: false, question_id: 3 },
-           { body: 'Cascading Style Sheets', correct: true, question_id: 3 }]
+categories.each { |c| Category.create! c }
 
-results = [{ user_id: 1, test_id: 1 }, { user_id: 1, test_id: 2 }, { user_id: 1, test_id: 3 }]
+tests = [{ title: 'HTML', category_id: Category.first.id, author_id: User.first.id },
+         { title: 'Ruby', category_id: Category.last.id, author_id: User.first.id },
+         { title: 'CSS', category_id: Category.first.id, author_id: User.first.id }]
 
-User.find_or_create_by!({ id: 1, name: 'Evgeny', email: 'test@test.com', password: '123456' })
-categories.each { |c| Category.find_or_create_by! c }
-tests.each { |t| Test.find_or_create_by! t }
-questions.each { |q| Question.find_or_create_by! q }
-answers.each { |a| Answer.find_or_create_by! a }
-results.each { |r| Result.find_or_create_by! r }
+tests.each { |t| Test.create! t }
+
+questions = [{ body: 'Какой из предложенных тегов соответствует параграфу?', test_id: Test.find_by(title: 'HTML').id },
+             { body: 'Как называется функция, которая автоматически создаёт только в классе метод присвоения переменной?',
+               test_id: Test.find_by(title: 'Ruby').id },
+             { body: 'Как расшифровывается CSS', test_id: Test.find_by(title: 'CSS').id }]
+
+questions.each { |q| Question.create! q }
+
+answers = [{ body: '<div>', correct: false, question_id: Question.first.id },
+           { body: '<span>', correct: false, question_id: Question.first.id },
+           { body: '<p>', correct: true, question_id: Question.first.id },
+           { body: '<a>', correct: false, question_id: Question.first.id },
+           { body: 'attr_reader', correct: false, question_id: Question.find_by(test_id: Test.find_by(title: 'Ruby').id).id },
+           { body: 'attr_accessor', correct: false, question_id: Question.find_by(test_id: Test.find_by(title: 'Ruby').id).id },
+           { body: 'initialize', correct: false, question_id: Question.find_by(test_id: Test.find_by(title: 'Ruby').id).id },
+           { body: 'attr_writer', correct: true, question_id: Question.find_by(test_id: Test.find_by(title: 'Ruby').id).id },
+           { body: 'Common Style Sheets', correct: false, question_id: Question.last.id },
+           { body: 'Computer Style Sheets', correct: false, question_id: Question.last.id },
+           { body: 'Cascading Style Sheets', correct: true, question_id: Question.last.id }]
+
+answers.each { |a| Answer.create! a }
+
+results = [{ user_id: User.first.id, test_id: Test.find_by(title: 'HTML').id },
+           { user_id: User.first.id, test_id: Test.find_by(title: 'Ruby').id },
+           { user_id: User.first.id, test_id: Test.find_by(title: 'CSS').id }]
+
+results.each { |r| Result.create! r }
