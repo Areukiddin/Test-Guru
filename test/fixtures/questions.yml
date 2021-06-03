@@ -3,9 +3,7 @@
 one:
   body: MyString
   test_id: 1
-  correct_answer: MyString
 
 two:
   body: MyString
   test_id: 1
-  correct_answer: MyString
