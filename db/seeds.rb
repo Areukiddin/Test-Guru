@@ -32,7 +32,7 @@ answers = [{ body: '<div>', correct: false, question: Question.first },
            { body: 'attr_reader', correct: false, question: Question.find_by(test: Test.find_by(title: 'Ruby')) },
            { body: 'attr_accessor', correct: false, question: Question.find_by(test: Test.find_by(title: 'Ruby')) },
            { body: 'initialize', correct: false, question: Question.find_by(test: Test.find_by(title: 'Ruby')) },
-           { body: 'attr_writer', correct: true, question: Question.find_by(test: Test.find_by(title: 'Ruby'))},
+           { body: 'attr_writer', correct: true, question: Question.find_by(test: Test.find_by(title: 'Ruby')) },
            { body: 'Common Style Sheets', correct: false, question: Question.last },
            { body: 'Computer Style Sheets', correct: false, question: Question.last },
            { body: 'Cascading Style Sheets', correct: true, question: Question.last }]
