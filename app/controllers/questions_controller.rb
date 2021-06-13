@@ -1,35 +1,43 @@
 class QuestionsController < ApplicationController
-  before_action :find_question, only: %i[show destroy]
-  before_action :find_test, only: %i[index create]
+  before_action :find_question, only: %i[show edit update destroy]
+  before_action :find_test, only: %i[index new create]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_record_not_found
 
   def index
-    questions = @test.questions.pluck(:body)
-
-    render plain: questions.join("\n")
+    @questions = @test.questions
   end
 
-  def show
-    render plain: @question.body
-  end
+  def show; end
 
-  def new; end
+  def edit; end
+
+  def new
+    @question = @test.questions.new
+  end
 
   def create
-    question = @test.questions.build(question_params)
+    @question = @test.questions.build(question_params)
 
-    if question.save
-      render plain: question.body
+    if @question.save
+      redirect_to test_path(@test)
     else
       render :new
+    end
+  end
+
+  def update
+    if @question.update(question_params)
+      redirect_to test_path(@question.test)
+    else
+      render :edit
     end
   end
 
   def destroy
     @question.destroy!
 
-    redirect_to tests_path(@question.test)
+    redirect_to test_path(@question.test)
   end
 
   private
@@ -47,6 +55,6 @@ class QuestionsController < ApplicationController
   end
 
   def rescue_with_record_not_found
-    render plain: 'Вопрос не найден'
+    render plain: 'Question not found'
   end
 end

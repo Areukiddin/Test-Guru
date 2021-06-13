@@ -1,0 +1,30 @@
+<br/>
+<div>
+  <strong>Title:</strong>
+  <%= @test.title %>
+</div>
+  <br/>
+
+<div>
+  <strong>Level:</strong>
+  <%= @test.level %>
+</div>
+<br/>
+
+<div>
+  <strong>Category:</strong>
+  <%= @test.category.title %>
+</div>
+<br/>
+
+<strong>Questions:</strong>
+<br/>
+<ol>
+  <%= render @test.questions %>
+</ol>
+
+<br/>
+
+<p class="button"><%= link_to '+ Add question', new_test_question_path(@test) %></p>
+<br/>
+<%= link_to 'Back', tests_path %>
