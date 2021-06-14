@@ -15,8 +15,15 @@ body {
 }
 
 a {
+  display: flex;
+  align-items: center;
+  text-align: center;
   color: rgb(85, 84, 84);
   text-decoration: none;
+}
+
+a:hover {
+  color: rgba(85, 84, 84, 0.8);
 }
 
 table {
@@ -56,7 +63,7 @@ footer {
 }
 
 .button {
-  width: 120px;
+  width: 80px;
   height: 30px;
   display: flex;
   justify-content: center;
@@ -65,4 +72,30 @@ footer {
   text-align: center;
   border: 1px solid #000;
   border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgba(85, 84, 84, 0.2);
+}
+
+.button > a {
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.text-area {
+  width: 400px;
+  height: 15px;
+}
+
+.text-area > input:first-of-type {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.text-area > a {
+  width: 52px;
+  margin: 20px auto 0 auto;
 }
