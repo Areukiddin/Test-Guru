@@ -1,0 +1,12 @@
+<li>
+  <p> <%= link_to answer.body, answer %></p>
+  <div class="buttons-row">
+  <p class="button"><%= link_to 'Edit', edit_answer_path(answer) %></p>
+  <p class="button"><%= link_to 'Delete',
+              answer_path(answer),
+              method: :delete,
+              data: { confirm: 'Are you sure to delete answer?' } %>
+  </p>
+  </div>
+</li>
+<br/>
