@@ -14,8 +14,7 @@ class TestsController < ApplicationController
   def edit; end
 
   def create
-    @test = Test.new(test_params)
-    @test.author = User.first
+    @test = User.first.created_tests.build(test_params)
     if @test.save
       redirect_to @test
     else
@@ -33,6 +32,7 @@ class TestsController < ApplicationController
 
   def destroy
     @test.destroy
+
     redirect_to tests_path
   end
 
