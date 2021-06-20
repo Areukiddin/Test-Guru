@@ -4,7 +4,7 @@
 
   <div class="text-area">
     <%= form.label :question%>
-    <%= form.text_field :body, id: :body %>
+    <%= form.text_area :body, id: :body, size: "30x5" %>
     <%= form.submit %>
     <%= link_to '<- Back', test_path(@question.test) %>
   </div>

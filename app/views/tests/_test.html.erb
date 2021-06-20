@@ -9,4 +9,6 @@
                  test_path(test),
                  method: :delete,
                  data: { confirm: 'Are you sure to delete test?' } %>
+  </td>
+  <td><%= button_to 'Start', start_test_path(test) %></td>
 </tr>
