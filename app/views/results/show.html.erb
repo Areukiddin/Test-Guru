@@ -1,5 +1,7 @@
 <h1>Passing the <%= @test_passage.test.title %> Test</h1>
 <br/>
+<p><%= questions_counter(@test_passage) %></p>
+<br/>
 <b>
   <%= @test_passage.current_question.body %>
 </b>
@@ -13,4 +15,6 @@
   <% end %>
   <br/>
   <p><%= form.submit 'Next' %></p>
+  <br/>
+  <p class="red"><%= link_to 'Cancel', root_path %></p>
 <% end %>
