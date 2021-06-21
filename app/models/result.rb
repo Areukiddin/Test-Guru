@@ -15,6 +15,14 @@ class Result < ApplicationRecord
     save!
   end
 
+  def success_result?
+    correct_answers_percent.to_i >= 85
+  end
+
+  def correct_answers_percent
+    (self.correct_answers.to_f / self.test.questions.each { |q| q.answers.correct }.count * 100).to_i
+  end
+
   private
 
   def set_first_question
@@ -22,10 +30,7 @@ class Result < ApplicationRecord
   end
 
   def correct_answer?(answer_ids)
-    correct_answers_count = test_correct_answers.count
-
-    (correct_answers_count == test_correct_answers.where(id: answer_ids).count) &&
-      correct_answers_count == answer_ids.count
+    test_correct_answers.ids.sort == answer_ids.map(&:to_i).sort
   end
 
   def test_correct_answers
