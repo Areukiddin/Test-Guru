@@ -6,6 +6,8 @@ class Result < ApplicationRecord
   before_validation :set_first_question, on: :create
   before_update :set_next_question
 
+  SUCCESS_TRESHOLD = 85
+
   def completed?
     current_question.nil?
   end
@@ -16,7 +18,7 @@ class Result < ApplicationRecord
   end
 
   def success_result?
-    correct_answers_percent.to_i >= 85
+    correct_answers_percent.to_i >= SUCCESS_TRESHOLD
   end
 
   def correct_answers_percent
@@ -30,7 +32,7 @@ class Result < ApplicationRecord
   end
 
   def correct_answer?(answer_ids)
-    test_correct_answers.ids.sort == answer_ids.map(&:to_i).sort
+    !answer_ids.nil? && test_correct_answers.ids.sort == answer_ids.map(&:to_i).sort
   end
 
   def test_correct_answers
