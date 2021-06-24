@@ -32,7 +32,7 @@ class Result < ApplicationRecord
   end
 
   def correct_answer?(answer_ids)
-    !answer_ids.nil? && test_correct_answers.ids.sort == answer_ids.map(&:to_i).sort
+    test_correct_answers.ids.sort == answer_ids&.map(&:to_i)&.sort
   end
 
   def test_correct_answers
