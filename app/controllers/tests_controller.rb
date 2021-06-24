@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :find_test, only: %i[show destroy update edit]
+  before_action :find_test, only: %i[show destroy update edit start]
 
   def index
     @tests = Test.all
@@ -36,6 +36,11 @@ class TestsController < ApplicationController
     redirect_to tests_path
   end
 
+  def start
+    current_user.tests.push(@test) # leave this method for future authentication
+    redirect_to @user.test_passage(@test)
+  end
+
   private
 
   def test_params
@@ -44,5 +49,9 @@ class TestsController < ApplicationController
 
   def find_test
     @test = Test.find(params[:id])
+  end
+
+  def current_user
+    @user = User.first
   end
 end

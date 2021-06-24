@@ -1,3 +1,10 @@
+<br/>
 <p><%= @question.body %></p>
+<br/>
+<ol>
+<%= render @question.answers %>
+</ol>
 
+<%= link_to '+ Add answer', new_question_answer_path(@question) %>
+<br/>
 <%= link_to '<- Back', test_path(@question.test) %>

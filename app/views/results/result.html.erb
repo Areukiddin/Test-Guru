@@ -1,0 +1,9 @@
+<h1>The <%= @test_passage.test.title %> test was completed!</h1>
+<br/>
+<% if @test_passage.success_result? then %>
+<%= render partial: 'success', locals: {percent: @test_passage.correct_answers_percent} %>
+<% else %>
+ <%= render partial: 'fail', locals: {percent: @test_passage.correct_answers_percent} %>
+<% end %>
+<br/>
+<h3><%= link_to '<- To tests list', root_path %></h3>
