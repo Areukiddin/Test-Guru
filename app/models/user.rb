@@ -5,6 +5,11 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
+  validates :email, format: { with: EMAIL_FORMAT, message: 'invalid format' }
+
+  EMAIL_FORMAT = /\A[a-z0-9+\-_.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+
+  has_secure_password
 
   def results_list_by(level)
     Test.joins(:results)
