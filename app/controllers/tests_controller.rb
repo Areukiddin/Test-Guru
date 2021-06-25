@@ -1,4 +1,5 @@
 class TestsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   before_action :find_test, only: %i[show destroy update edit start]
 
   def index
@@ -37,8 +38,12 @@ class TestsController < ApplicationController
   end
 
   def start
-    current_user.tests.push(@test) # leave this method for future authentication
-    redirect_to @user.test_passage(@test)
+    if current_user
+      current_user.tests.push(@test)
+      redirect_to current_user.test_passage(@test)
+    else
+      redirect_to login_path
+    end
   end
 
   private
@@ -49,9 +54,5 @@ class TestsController < ApplicationController
 
   def find_test
     @test = Test.find(params[:id])
-  end
-
-  def current_user
-    @user = User.first
   end
 end
