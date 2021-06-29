@@ -36,3 +36,6 @@ Style/NumericLiterals:
 
 Metrics/BlockLength:
   Max: 250
+
+Rails/ContentTag:
+  Enabled: false

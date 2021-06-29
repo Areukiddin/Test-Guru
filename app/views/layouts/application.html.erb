@@ -11,7 +11,8 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'shared/header', locals:{current_user: current_user}%>
+    <div class='content'><%= yield %></div>
     <%= render 'shared/footer' %>
   </body>
 </html>
