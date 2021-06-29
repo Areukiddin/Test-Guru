@@ -1,8 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :authenticate_user!
 
-  VERIFY_TEXT = 'Are you a Guru? Verify your email and password please'.freeze
-
   def new; end
 
   def create
@@ -12,13 +10,13 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to cookies[:user_path] || tests_path
     else
-      flash.now[:alert] = VERIFY_TEXT
+      flash.now[:alert] = t(:verify)
       render :new
     end
   end
 
   def destroy
-    session.delete(:user_id) if session[:user_id]
+    session.delete(:user_id)
     redirect_to root_path
   end
 end
