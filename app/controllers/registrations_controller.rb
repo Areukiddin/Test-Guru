@@ -1,10 +1,4 @@
-class UsersController < ApplicationController
-  skip_before_action :authenticate_user!
-
-  def new
-    @user = User.new
-  end
-
+class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(user_params)
 

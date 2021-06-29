@@ -1,4 +1,4 @@
-User.create!({ name: 'Evgeny', email: 'test@test.com', password_digest: Digest::SHA1.hexdigest('123456') })
+User.create!({ name: 'Evgeny', email: 'test@test.com', password: '123456' })
 
 categories = [{ title: 'Frontend' }, { title: 'Backend' }]
 
