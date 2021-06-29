@@ -1,0 +1,12 @@
+<header class='header'>
+  <p class='title admin'><%= link_to 'AdminPanel | TestGuru', admin_tests_path %></p>
+  <p class='menu'><%= header_menu(current_user) %>
+  <% if user_signed_in? %>
+  <span class='logout'>
+    <%= link_to 'Log out',
+              destroy_user_session_path,
+              method: :delete %>
+  </span>
+  <% end %>
+  </p>
+</header>

@@ -1,4 +1,4 @@
-User.create!({ name: 'Evgeny', email: 'test@test.com', password: '123456' })
+User.create!({ first_name: 'Evgeny', last_name: 'Maximov', email: 'test@test.com', password: '123456', type: 'Admin' })
 
 categories = [{ title: 'Frontend' }, { title: 'Backend' }]
 

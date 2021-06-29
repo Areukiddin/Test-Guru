@@ -6,4 +6,15 @@ module TestsHelper
       'Create New test'
     end
   end
+
+  def convert(level)
+    case level
+    when 0..1
+      'Easy'
+    when 2..4
+      'Medium'
+    else
+      'Hard'
+    end
+  end
 end

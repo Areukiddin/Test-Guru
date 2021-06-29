@@ -15,6 +15,10 @@
   text-align: center;
   width: 150px;
   border-right: 1px solid #000;
+
+  &.admin {
+    width: 200px;
+  }
 }
 
 .menu {

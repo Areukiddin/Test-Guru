@@ -1,9 +1,9 @@
 <li>
-  <p> <%= link_to answer.body, answer %></p>
+  <p> <%= link_to answer.body, admin_answer_path(answer) %></p>
   <div class="buttons-row">
-  <p class="button-green"><%= link_to 'Edit', edit_answer_path(answer) %></p>
+  <p class="button-green"><%= link_to 'Edit', edit_admin_answer_path(answer) %></p>
   <p class="button-red"><%= link_to 'Delete',
-              answer_path(answer),
+              admin_answer_path(answer),
               method: :delete,
               data: { confirm: 'Are you sure to delete answer?' } %>
   </p>
