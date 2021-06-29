@@ -34,3 +34,4 @@ en:
   verify: "Are you a Guru? Verify your email and password please"
   completed_test: "You just completed the TestGuru test!"
   for_admin_only: "Only administators can see this page."
+  signed_in: "Signed in successfully."
