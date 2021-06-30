@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def header_menu(current_user)
-    if current_user
+    if user_signed_in?
       render partial: 'shared/user', locals: { user: current_user }
     else
       link_to 'Log in', new_user_session_path

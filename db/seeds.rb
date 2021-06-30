@@ -10,10 +10,10 @@ tests = [{ title: 'HTML', category: Category.first, author: User.first },
 
 tests.each { |t| Test.create! t }
 
-questions = [{ body: 'Какой из предложенных тегов соответствует параграфу?', test: Test.find_by(title: 'HTML') },
-             { body: 'Как называется функция, которая автоматически создаёт только в классе метод присвоения переменной?',
+questions = [{ body: 'Which HTML tag is match paragraph?', test: Test.find_by(title: 'HTML') },
+             { body: 'What function automatically creates appropriation variable method?',
                test: Test.find_by(title: 'Ruby') },
-             { body: 'Как расшифровывается CSS', test: Test.find_by(title: 'CSS') }]
+             { body: 'Css is: ', test: Test.find_by(title: 'CSS') }]
 
 questions.each { |q| Question.create! q }
 

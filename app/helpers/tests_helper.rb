@@ -7,12 +7,10 @@ module TestsHelper
     end
   end
 
-  def convert(level)
+  def convert_test_level(level)
     case level
-    when 0..1
-      'Easy'
-    when 2..4
-      'Medium'
+    when 0..1 then 'Easy'
+    when 2..4 then 'Medium'
     else
       'Hard'
     end

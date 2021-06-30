@@ -1,6 +1,6 @@
 <tr>
   <td><%= link_to test.title, admin_test_path(test) %></td>
-  <td><%= convert(test.level) %></td>
+  <td><%= convert_test_level(test.level) %></td>
   <td><%= test.category.title %></td>
   <td><%= test.questions.count %></td>
   <td class="green"><%= link_to 'Edit', edit_admin_test_path(test) %></td>
