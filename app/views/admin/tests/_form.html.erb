@@ -1,0 +1,23 @@
+<h1> <%= test_form_header(@test) %> </h1>
+<%= form_with model:[:admin, @test], local: true, class: 'form' do |form| %>
+  <%= render 'shared/errors', resource: @test %>
+  <br/>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, id: :test_title %>
+  </div>
+  <br/>
+  <div>
+    <%= form.label :level %><br>
+    <%= form.number_field :level, id: :test_level %>
+  </div>
+  <br/>
+  <div>
+    <%= form.label :category_id %><br/>
+    <%= form.collection_select :category_id, Category.all, :id, :title, prompt: true %>
+  </div>
+  <br/>
+  <div><%= form.submit %></div>
+ <% end %>
+<br/>
+<%= link_to '<- Back', admin_tests_path %>

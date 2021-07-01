@@ -1,14 +1,7 @@
 <tr>
-  <td><%= link_to test.title, test %></td>
-  <td><%= test.level %></td>
+  <td><%= test.title %></td>
+  <td><%= convert_test_level(test.level) %></td>
   <td><%= test.category.title %></td>
   <td><%= test.questions.count %></td>
-  <td class="green"><%= link_to 'Edit', edit_test_path(test) %></td>
-  <td class="red">
-     <%= link_to 'Delete',
-                 test_path(test),
-                 method: :delete,
-                 data: { confirm: 'Are you sure to delete test?' } %>
-  </td>
   <td><%= button_to 'Start', start_test_path(test) %></td>
 </tr>

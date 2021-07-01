@@ -12,7 +12,11 @@
 
   <body>
     <%= render 'shared/header', locals:{current_user: current_user}%>
-    <div class='content'><%= yield %></div>
+
+    <div class='content'>
+      <%= render 'shared/flash' %>
+      <%= yield %>
+    </div>
     <%= render 'shared/footer' %>
   </body>
 </html>

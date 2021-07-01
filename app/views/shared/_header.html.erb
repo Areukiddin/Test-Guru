@@ -1,12 +1,11 @@
 <header class='header'>
   <p class='title'><%= link_to 'TestGuru', root_path %></p>
   <p class='menu'><%= header_menu(current_user) %>
-  <% if logged_in? then %>
+  <% if user_signed_in? %>
   <span class='logout'>
     <%= link_to 'Log out',
-              session_path(session),
-              method: :delete,
-              data: { confirm: 'Are you sure you want to log out?' } %>
+              destroy_user_session_path,
+              method: :delete %>
   </span>
   <% end %>
   </p>

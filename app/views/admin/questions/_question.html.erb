@@ -1,0 +1,13 @@
+<li>
+  <p> <%= link_to question.body, admin_question_path(question) %></p>
+  <div class="buttons-row">
+  <p class="button-green"><%= link_to 'Edit', edit_admin_question_path(question) %></p>
+  <p class="button-red"><%= link_to 'Delete',
+              admin_question_path(question),
+              method: :delete,
+              data: { confirm: 'Are you sure to delete question?' } %>
+  </p>
+  </div>
+
+</li>
+<br/>

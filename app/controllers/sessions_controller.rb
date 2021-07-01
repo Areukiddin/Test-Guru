@@ -1,22 +1,9 @@
-class SessionsController < ApplicationController
-  skip_before_action :authenticate_user!
+class SessionsController < Devise::SessionsController
+  after_action :after_login, only: :create
 
-  def new; end
+  private
 
-  def create
-    user = User.find_by(email: params[:email])
-
-    if user&.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to cookies[:user_path] || tests_path
-    else
-      flash.now[:alert] = t(:verify)
-      render :new
-    end
-  end
-
-  def destroy
-    session.delete(:user_id)
-    redirect_to root_path
+  def after_login
+    flash[:notice] = current_user.sign_in_count.eql?(1) ? "Hello, #{current_user.first_name} #{current_user.last_name}!" : t(:signed_in)
   end
 end
