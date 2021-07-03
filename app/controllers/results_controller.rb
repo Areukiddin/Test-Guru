@@ -17,12 +17,12 @@ class ResultsController < ApplicationController
   end
 
   def gist
-    result = GistQuestionService.new(@test_passage.current_question).call
+    @result = GistQuestionService.new(@test_passage.current_question).call
 
-    @test_passage.current_question.gists.build(url: result.url, user: current_user).save!
+    GistsController.new.create(gist_params) if @result.html_url?
 
-    flash_options = if result
-                      { notice: t('gist.success', url: result.html_url) }
+    flash_options = if @result.html_url?
+                      { notice: t('gist.success', url: @result.html_url) }
                     else
                       { alert: t('gist.failure') }
                     end
@@ -34,5 +34,9 @@ class ResultsController < ApplicationController
 
   def set_test_passage
     @test_passage = Result.find(params[:id])
+  end
+
+  def gist_params
+    { question: @test_passage.current_question, result: @result, user: current_user }
   end
 end
