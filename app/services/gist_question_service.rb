@@ -1,15 +1,22 @@
 class GistQuestionService
-  def initialize(question, client: nil)
+  ResponseObject = Struct.new(:success?, :html_url)
+
+  def initialize(question)
     @question = question
     @test = @question.test
-    @client = client || Octokit::Client.new(access_token: Rails.application.credentials.github[:access_token])
+    @client = http_client
   end
 
   def call
-    @client.create_gist(gist_params)
+    response = @client.create_gist(gist_params)
+    ResponseObject.new(response.html_url.present?, response.html_url)
   end
 
   private
+
+  def http_client
+    Octokit::Client.new(access_token: Rails.application.credentials.github[:access_token])
+  end
 
   def gist_params
     {
