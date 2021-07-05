@@ -125,12 +125,3 @@
     text-align: left;
   }
 }
-
-.wrong {
-  &:after {
-    content: url("./icons/cross.svg");
-    height: 12px;
-    width: 12px;
-    z-index: 100;
-  }
-}
