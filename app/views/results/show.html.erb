@@ -2,9 +2,9 @@
 <br/>
 <p><%= questions_counter(@test_passage) %></p>
 <br/>
-<b>
-  <%= @test_passage.current_question.body %>
-</b>
+<p>
+  <b><%= @test_passage.current_question.body %></b>
+</p>
 <br/>
 <%= form_with url: result_path(@test_passage), local: true, method: :put do |form|%>
   <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b| %>
@@ -13,6 +13,8 @@
       <%= b.label %>
     </p>
   <% end %>
+  <br/>
+  <p><%= link_to 'Gist question', gist_result_path(@test_passage), method: :post %></p>
   <br/>
   <p><%= form.submit 'Next' %></p>
   <br/>
