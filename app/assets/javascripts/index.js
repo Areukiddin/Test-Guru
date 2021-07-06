@@ -7,10 +7,10 @@ document.addEventListener("turbolinks:load", () => {
   sortedCell?.addEventListener("click", sorter.sortByTitle);
 
   // Confirm password
-  const confirmator = new PasswordConfirmator(
+  const passwordUtil = new PasswordUtil(
     "user_password",
     "user_password_confirmation"
   );
 
-  confirmator.toggleConfirmation();
+  passwordUtil.toggleConfirmation();
 });

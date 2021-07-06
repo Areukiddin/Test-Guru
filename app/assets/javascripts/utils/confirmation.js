@@ -1,4 +1,4 @@
-class PasswordConfirmator {
+class PasswordUtil {
   constructor(passwordId, confirmationId) {
     this.password = document.getElementById(passwordId);
     this.passwordConfirmation = document.getElementById(confirmationId);
