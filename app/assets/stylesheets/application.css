@@ -1,4 +1,5 @@
 /*=require_tree*/
+@import "bootstrap";
 
 * {
   box-sizing: border-box;
@@ -49,6 +50,7 @@ li {
 
 th {
   padding: 12px;
+  width: 100px;
 }
 
 footer {

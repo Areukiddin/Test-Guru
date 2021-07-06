@@ -13,3 +13,21 @@
 .flash.notice {
   border-color: #3c85e0;
 }
+
+.field {
+  position: relative;
+}
+
+.circle-row {
+  position: absolute;
+  top: 31px;
+  left: 132px;
+}
+
+.check-circle {
+  color: green;
+}
+
+.x-circle {
+  color: red;
+}
