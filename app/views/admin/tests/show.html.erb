@@ -22,7 +22,9 @@
 <ol>
   <%= render @test.questions %>
 </ol>
+<br/>
 
+<p><%= link_to 'Edit', edit_admin_test_path(@test) %></p>
 <br/>
 
 <p><%= link_to '+ Add question', new_admin_test_question_path(@test) %></p>

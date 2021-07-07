@@ -35,6 +35,7 @@ en:
   completed_test: "You just completed the TestGuru test!"
   for_admin_only: "Only administators can see this page."
   signed_in: "Signed in successfully."
+  submit: "OK"
   gist:
     success: "Successfully created. %{url}"
     failure: "Failed to create gist."

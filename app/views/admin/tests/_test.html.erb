@@ -1,10 +1,19 @@
 <tr>
-  <td><%= link_to test.title, admin_test_path(test) %></td>
-  <td><%= convert_test_level(test.level) %></td>
-  <td><%= test.category.title %></td>
-  <td><%= test.questions.count %></td>
-  <td class="green"><%= link_to 'Edit', edit_admin_test_path(test) %></td>
-  <td class="red">
+  <td class="align-middle">
+    <%= content_tag :span, test.title, class: 'test-title', data: {test_id: test.id} %>
+    <%= render 'form_inline', test: test == @test ? @test : test %>
+  </td>
+  <td class="align-middle"><%= convert_test_level(test.level) %></td>
+  <td class="align-middle"><%= test.category.title %></td>
+  <td class="align-middle"><%= test.questions.count %></td>
+  <td class="align-middle"><%= link_to 'Show', admin_test_path(test) %></td>
+  <td class="green align-middle">
+  <%= link_to 'Edit',
+      edit_admin_test_path(test),
+      data: {test_id: test.id},
+      class: 'form-inline-link'
+  %></td>
+  <td class="red align-middle">
      <%= link_to 'Delete',
                  admin_test_path(test),
                  method: :delete,

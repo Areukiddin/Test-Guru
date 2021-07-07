@@ -7,6 +7,10 @@
   font-family: "Newsreader", serif;
 }
 
+.hide {
+  display: none;
+}
+
 .content {
   position: relative;
   width: 100vw;
@@ -29,28 +33,12 @@ a:hover {
   color: rgba(85, 84, 84, 0.8);
 }
 
-table {
-  border-collapse: collapse;
-  border: 1px solid grey;
-}
-
-th,
-td {
-  border: 1px solid grey;
-  text-align: center;
-}
-
-td {
-  padding: 10px;
-}
-
 li {
   font-size: 14px;
 }
 
-th {
-  padding: 12px;
-  width: 100px;
+p {
+  margin: 0 0;
 }
 
 footer {
@@ -59,11 +47,7 @@ footer {
   align-items: center;
   position: absolute;
   width: 100%;
-  top: calc(100% - 84px);
+  top: calc(100% - 74px);
   background-color: rgb(223, 223, 223);
   border-top: 1px solid #000;
-}
-
-footer > p {
-  padding: 5px 0;
 }
