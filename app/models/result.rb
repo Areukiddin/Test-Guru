@@ -25,6 +25,10 @@ class Result < ApplicationRecord
     (self.correct_answers.to_f / self.test.questions.each { |q| q.answers.correct }.count * 100).to_i
   end
 
+  def current_question_number
+    test.questions.order(:id).where('id < ?', current_question.id).size + 1
+  end
+
   private
 
   def set_first_question

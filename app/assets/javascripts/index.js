@@ -15,7 +15,7 @@ document.addEventListener("turbolinks:load", () => {
   // Confirm password
 
   passwordUtil.toggleConfirmation();
-  //Inline editor
+  // Inline editor
 
   forms?.forEach((f) =>
     f.addEventListener("click", InlineEditor.toggleEditBtnClick)
@@ -26,4 +26,7 @@ document.addEventListener("turbolinks:load", () => {
 
     InlineEditor.toggleFormInline(errorId);
   }
+  // Progress bar
+
+  ProgressBar.fillBarHandler();
 });
