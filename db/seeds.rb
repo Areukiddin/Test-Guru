@@ -4,9 +4,9 @@ categories = [{ title: 'Frontend' }, { title: 'Backend' }]
 
 categories.each { |c| Category.create! c }
 
-tests = [{ title: 'HTML', category: Category.first, author: User.first },
-         { title: 'Ruby', category: Category.last, author: User.first },
-         { title: 'CSS', category: Category.first, author: User.first }]
+tests = [{ title: 'HTML', category: Category.find_by(title: 'Frontend'), author: User.first },
+         { title: 'Ruby', category: Category.find_by(title: 'Backend'), author: User.first },
+         { title: 'CSS', category: Category.find_by(title: 'Frontend'), author: User.first }]
 
 tests.each { |t| Test.create! t }
 
