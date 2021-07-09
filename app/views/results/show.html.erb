@@ -3,6 +3,12 @@
 <p><%= questions_counter(@test_passage) %></p>
 <br/>
 <p>
+  <%= content_tag :div, '', class: 'custom-progress-bar', data: {progress_bar: (@test_passage.current_question_number / @test_passage.test.questions.size.to_f) } do %>
+    <div class="green-bar"></div>
+  <% end %>
+</p>
+<br/>
+<p>
   <b><%= @test_passage.current_question.body %></b>
 </p>
 <br/>
