@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :badges, only: :index
+  resources :own_badges, only: :index
+
   namespace :admin do
     resources :tests do
       patch :update_inline, on: :member
@@ -26,5 +29,6 @@ Rails.application.routes.draw do
       end
     end
     resources :gists, only: :index
+    resources :badges
   end
 end

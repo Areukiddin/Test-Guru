@@ -1,0 +1,17 @@
+<h1>Badges list</h1>
+<br/>
+<div>
+  <%= link_to '+ Add badge', new_admin_badge_path %>
+</div>
+<table class="table">
+  <th class="sort-by-title pointer">
+    Title
+    <%= octicon 'arrow-up', class: 'text-success hide' %>
+    <%= octicon 'arrow-down', class: 'text-success hide' %>
+  </th>
+  <th>Given for</th>
+   <th colspan="2">Actions</th>
+
+  <%= render @badges %>
+
+</table>

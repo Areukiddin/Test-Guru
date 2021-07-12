@@ -1,0 +1,20 @@
+<% if @own_badges.present? %>
+
+<h1>My badges list</h1>
+<br/>
+<table class="table">
+  <th class="sort-by-title pointer">
+    Title
+    <%= octicon 'arrow-up', class: 'text-success hide' %>
+    <%= octicon 'arrow-down', class: 'text-success hide' %>
+  </th>
+  <th>Given for</th>
+  <%= render @own_badges %>
+</table>
+
+<% else %>
+  <p>You dont have any badges yet.</p>
+  <%= link_to 'Click it to examine yourself!', tests_path %>
+<% end %>
+
+<%= link_to '<- Back', badges_path %>
