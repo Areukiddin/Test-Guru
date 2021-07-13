@@ -3,7 +3,11 @@ class ResultsController < ApplicationController
 
   def show; end
 
-  def result; end
+  def result
+    current_user.add_category_badge(@test_passage)
+    current_user.add_level_badge(@test_passage)
+    current_user.add_first_try_badge(@test_passage)
+  end
 
   def update
     @test_passage.accept!(params[:answer_ids])

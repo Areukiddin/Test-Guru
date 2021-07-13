@@ -3,7 +3,7 @@ class AddTableBadges < ActiveRecord::Migration[6.1]
     create_table :badges do |t|
       t.string :title, null: false
       t.string :file_name, null: false, default: '/app/assets/images/badge.png'
-      t.string :archived_for, null: false
+      t.string :achieved_for, null: false
 
       t.timestamps
     end

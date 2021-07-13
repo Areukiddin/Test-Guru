@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_07_09_123949) do
   create_table "badges", force: :cascade do |t|
     t.string "title", null: false
     t.string "file_name", default: "/app/assets/images/badge.png", null: false
-    t.string "archived_for", null: false
+    t.string "achieved_for", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
