@@ -129,3 +129,18 @@
 .pointer {
   cursor: pointer;
 }
+
+.timer {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: 34px;
+  text-align: center;
+  margin-top: 10px;
+  color: green;
+  font-size: 20px;
+
+  & > p {
+    padding: 5px;
+  }
+}
