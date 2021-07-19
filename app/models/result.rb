@@ -9,10 +9,12 @@ class Result < ApplicationRecord
   SUCCESS_TRESHOLD = 85
 
   def completed?
-    current_question.nil?
+    current_question.nil? || times_up?
   end
 
   def accept!(answer_ids)
+    return if times_up?
+
     self.correct_answers += 1 if correct_answer?(answer_ids)
     save!
   end
@@ -22,14 +24,27 @@ class Result < ApplicationRecord
   end
 
   def correct_answers_percent
-    (self.correct_answers.to_f / self.test.questions.each { |q| q.answers.correct }.count * 100).to_i
+    self.correct_answers.zero? ? 0 : (self.correct_answers.to_f / self.test.questions.each { |q| q.answers.correct }.count * 100).to_i
   end
 
   def current_question_number
     test.questions.order(:id).where('id < ?', current_question.id).size + 1
   end
 
+  def times_up?
+    times_up <= Time.current
+  end
+
+  def left_time
+    time = times_up - Time.current
+    time.positive? ? time : 0
+  end
+
   private
+
+  def times_up
+    created_at + test.minutes_for_passing.minutes
+  end
 
   def set_first_question
     self.current_question = test.questions.first

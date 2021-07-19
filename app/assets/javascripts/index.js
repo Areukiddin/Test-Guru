@@ -9,6 +9,7 @@ document.addEventListener("turbolinks:load", () => {
   );
   const forms = document.querySelectorAll(".form-inline-link");
   const errors = document.querySelector(".error-message");
+  const timerContainer = document.querySelector(".timer");
   // Sort table
 
   sortedCell?.addEventListener("click", sorter.sortByTitle);
@@ -29,4 +30,9 @@ document.addEventListener("turbolinks:load", () => {
   // Progress bar
 
   ProgressBar.fillBarHandler();
+
+  // Timer
+  const timer = new Timer(timerContainer?.dataset.leftTime);
+
+  timer.start();
 });

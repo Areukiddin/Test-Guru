@@ -7,6 +7,9 @@
     <div class="green-bar"></div>
   <% end %>
 </p>
+  <%= content_tag :div, '', class: 'timer' , data: { left_time: @test_passage.left_time } do %>
+    <%= octicon 'clock' %>
+  <% end %>
 <br/>
 <p>
   <b><%= @test_passage.current_question.body %></b>
@@ -22,7 +25,7 @@
   <br/>
   <p><%= link_to 'Gist question', gist_result_path(@test_passage), method: :post %></p>
   <br/>
-  <p><%= form.submit 'Next' %></p>
+  <p><%= form.submit 'Next', id: 'next-btn' %></p>
   <br/>
   <p class="red"><%= link_to 'Cancel', root_path %></p>
 <% end %>
