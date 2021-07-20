@@ -4,9 +4,10 @@ class Result < ApplicationRecord
   belongs_to :current_question, class_name: 'Question', optional: true
 
   before_validation :set_first_question, on: :create
-  before_update :set_next_question
 
   SUCCESS_TRESHOLD = 85
+
+  scope :success_passed, -> { where('passage_percent >= ?', SUCCESS_TRESHOLD) }
 
   def completed?
     current_question.nil? || times_up?
@@ -16,6 +17,7 @@ class Result < ApplicationRecord
     return if times_up?
 
     self.correct_answers += 1 if correct_answer?(answer_ids)
+    self.current_question = set_next_question
     save!
   end
 
@@ -29,6 +31,10 @@ class Result < ApplicationRecord
 
   def current_question_number
     test.questions.order(:id).where('id < ?', current_question.id).size + 1
+  end
+
+  def calculate_passage_percent
+    update!(passage_percent: correct_answers_percent)
   end
 
   def times_up?
@@ -59,6 +65,6 @@ class Result < ApplicationRecord
   end
 
   def set_next_question
-    self.current_question = test.questions.order(:id).find_by('id > ?', current_question.id)
+    test.questions.order(:id).find_by('id > ?', self.current_question.id)
   end
 end

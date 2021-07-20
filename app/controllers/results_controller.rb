@@ -3,16 +3,14 @@ class ResultsController < ApplicationController
 
   def show; end
 
-  def result
-    current_user.add_category_badge(@test_passage)
-    current_user.add_level_badge(@test_passage)
-    current_user.add_first_try_badge(@test_passage)
-  end
+  def result; end
 
   def update
     @test_passage.accept!(params[:answer_ids])
 
     if @test_passage.completed?
+      @test_passage.calculate_passage_percent
+      give_badge
       TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to result_result_path(@test_passage)
     else
@@ -37,5 +35,14 @@ class ResultsController < ApplicationController
 
   def set_test_passage
     @test_passage = Result.find(params[:id])
+  end
+
+  def give_badge
+    badges = BadgeService.new(@test_passage).call
+
+    return if badges.empty?
+
+    current_user.badges << badges
+    flash[:notice] = t('badges.earn_badge')
   end
 end

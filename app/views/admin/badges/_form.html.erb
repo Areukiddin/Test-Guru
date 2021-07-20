@@ -7,26 +7,19 @@
     <%= form.text_field :title, id: :badge_title %>
   </div>
   <br/>
-  <div class='condition-checkboxes'>
-    <p>Achievement condition:</p>
-    <%= form.radio_button :achieved_for, 'All Frontend tests passed' %>
-    <%= form.label :achieved_for_all_category_tests, 'All Frontend tests passed' %><br>
-
-    <%= form.radio_button :achieved_for, 'All Backend tests passed' %>
-    <%= form.label :achieved_for_all_category_tests, 'All Backend tests passed' %><br>
-
-    <%= form.radio_button :achieved_for, 'Successfully first try test passed' %>
-    <%= form.label :achieved_for_first_try, 'Successfully first try test passed' %><br>
-
-    <%= form.radio_button :achieved_for, 'All easy tests passed' %>
-    <%= form.label :achieved_for_all_level_tests, 'All easy tests passed' %><br>
-
-    <%= form.radio_button :achieved_for, 'All medium tests passed' %>
-    <%= form.label :achieved_for_all_level_tests, 'All medium tests passed' %><br>
-
-    <%= form.radio_button :achieved_for, 'All hard tests passed' %>
-    <%= form.label :achieved_for_all_level_tests, 'All hard tests passed' %><br>
-
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_field :description, id: :badge_description %>
+  </div>
+  <br/>
+  <div>
+    <%= form.label :rule %><br>
+    <%= form.select :rule, Badge::BADGE_TYPES.map { |type| [ t(type), type ] } %>
+  </div>
+  <br/>
+  <div>
+    <%= form.label :rule_value %><br>
+    <%= form.text_field :rule_value, id: :badge_rule_value %>
   </div>
   <br/>
   <div><%= form.submit %></div>
