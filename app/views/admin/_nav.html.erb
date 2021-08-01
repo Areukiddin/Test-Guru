@@ -1,6 +1,7 @@
 <header class='header'>
   <p class='title admin'><%= link_to 'AdminPanel | TestGuru', admin_tests_path %></p>
-  <p class='gists_nav'><%= link_to 'Gists', admin_gists_path%></p>
+  <p class='gists-nav'><%= link_to 'Gists', admin_gists_path %></p>
+  <p class='admin-badges-nav'><%= link_to 'Badges', admin_badges_path %></p>
   <p class='menu'><%= header_menu(current_user) %>
   <% if user_signed_in? %>
   <span class='logout'>

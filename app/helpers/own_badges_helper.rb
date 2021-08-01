@@ -1,0 +1,2 @@
+module OwnBadgesHelper
+end

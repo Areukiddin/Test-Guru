@@ -1,0 +1,28 @@
+<h1> <%= badge_form_header(@badge) %> </h1>
+<%= form_with model:[:admin, @badge], local: true, class: 'form' do |form| %>
+  <%= render 'shared/errors', resource: @badge %>
+  <br/>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, id: :badge_title %>
+  </div>
+  <br/>
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_field :description, id: :badge_description %>
+  </div>
+  <br/>
+  <div>
+    <%= form.label :rule %><br>
+    <%= form.select :rule, Badge::BADGE_TYPES.map { |type| [ t(type), type ] } %>
+  </div>
+  <br/>
+  <div>
+    <%= form.label :rule_value %><br>
+    <%= form.text_field :rule_value, id: :badge_rule_value %>
+  </div>
+  <br/>
+  <div><%= form.submit %></div>
+ <% end %>
+<br/>
+<%= link_to '<- Back', admin_badges_path %>

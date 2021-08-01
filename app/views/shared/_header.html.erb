@@ -1,5 +1,6 @@
 <header class='header'>
   <p class='title'><%= link_to 'TestGuru', root_path %></p>
+  <p class="user-badges-nav"><%= link_to 'Badges', badges_path %></p>
   <p class='menu'><%= header_menu(current_user) %>
   <% if user_signed_in? %>
   <span class='logout'>

@@ -41,3 +41,5 @@ en:
     failure: "Failed to create gist."
     description: "A question about %{title} from TestGuru"
     file_name: "test-guru-question.txt"
+  badges:
+    earn_badge: "You just earned a new badge. Congrats!"

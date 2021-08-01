@@ -14,14 +14,14 @@
   border-color: #3c85e0;
 }
 
-.field {
+input#user_password_confirmation {
   position: relative;
 }
 
 .circle-row {
   position: absolute;
-  top: 31px;
-  left: 132px;
+  right: 45%;
+  bottom: 26%;
 }
 
 .check-circle {

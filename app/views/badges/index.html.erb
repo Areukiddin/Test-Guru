@@ -1,0 +1,17 @@
+<h1>Badges list</h1>
+<br/>
+<div>
+  <%= link_to 'My badges', own_badges_path %>
+</div>
+<br/>
+<table class="table">
+  <th class="sort-by-title pointer">
+    Title
+    <%= octicon 'arrow-up', class: 'text-success hide' %>
+    <%= octicon 'arrow-down', class: 'text-success hide' %>
+  </th>
+  <th>Description</th>
+
+  <%= render @badges %>
+
+</table>

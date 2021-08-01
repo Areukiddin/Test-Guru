@@ -1,0 +1,15 @@
+<tr>
+  <td class="align-middle d-flex align-items-center">
+    <%= octicon 'smiley', class: 'text-success' %>
+    <%= link_to badge.title, admin_badge_path(badge), class: 'pl-2' %>
+  </td>
+  <td class="align-middle"><%= badge.description %></td>
+  <td class="green align-middle">
+  <%= link_to 'Edit', edit_admin_badge_path(badge) %></td>
+  <td class="red align-middle">
+     <%= link_to 'Delete',
+                 admin_badge_path(badge),
+                 method: :delete,
+                 data: { confirm: 'Are you sure to delete badge?' } %>
+  </td>
+</tr>
